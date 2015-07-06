@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title></title>
+        <style>
+            *{
+                box-sizing:border-box;
+            }
+
+            body, html{
+                margin:0;
+                padding:0;
+            }
+
+            #wrapper .item{
+                width:25%;
+                vertical-align: top;
+                display:inline-block;
+                border: 1px solid #CCC;
+                min-height: 280px;
+                padding : 20px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id="wrapper"></div>
+        <div id="template" style="display:none"><!--
+        --><div class="item">
+
+                <H2>[:TITRE:]</h2>
+                <p>[:CONTENT:] - ( like [:STAT.LIKE:]) ( share [:STAT.SHARE:])</p>
+
+        </div><!--
+    --></div>
+        <script src="./js/template.class.js"></script>
+        <script src="./js/script.js"></script>
+    </body>
+</html>
