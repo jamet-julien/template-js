@@ -2,7 +2,7 @@
  * [Template description]
  * @param {[type]} sUrlScript [description]
  */
-var Template = function(sTemplate, aPattern) {
+var Template = function( sTemplate, aPattern) {
 
     this._sTemplate = sTemplate;
 
@@ -11,7 +11,7 @@ var Template = function(sTemplate, aPattern) {
 }
 
 /**
- * [treatObjet description]
+ * [treatObjet treatement par reference]
  * @param  {[type]} _oObj    [description]
  * @param  {[type]} _oReturn [description]
  * @return {[type]}          [description]
@@ -24,7 +24,7 @@ Template.prototype.treatObjet = function( sPrefix, oItem, oParent) {
         if( typeof( oItem[sAttr]) == 'object'){
 
             sNewAttr = ( sPrefix != '')? sPrefix + '.' + sAttr : sAttr;
-            oParent  = this.treatObjet( sNewAttr, oItem[sAttr], oItem);
+            this.treatObjet( sNewAttr, oItem[sAttr], oItem);
             delete oParent[sAttr];
 
         }else{
@@ -34,8 +34,6 @@ Template.prototype.treatObjet = function( sPrefix, oItem, oParent) {
 
     }
 
-    return oParent;
-
 }
 
 /**
@@ -43,13 +41,15 @@ Template.prototype.treatObjet = function( sPrefix, oItem, oParent) {
  * @param  {[type]} oItem [description]
  * @return {[type]}       [description]
  */
-Template.prototype.compute = function( oItem) {
+Template.prototype.compute = function( _oItem) {
+
+    var oItem     = JSON.parse( JSON.stringify( _oItem));
 
     var sTemplate = this._sTemplate;
 
-    var oNewItem  = this.treatObjet( '', oItem, {});
+    this.treatObjet( '', oItem, {});
 
-    for (var sAttr in oNewItem) {
+    for (var sAttr in oItem) {
 
         sTemplate = sTemplate.split( this._aPattern[0] + sAttr.toUpperCase() + this._aPattern[1]).join( oItem[sAttr]);
 
