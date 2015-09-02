@@ -8,7 +8,7 @@ var Template = function( sTemplate, aPattern) {
 
     this._aPattern = (typeof(aPattern) != 'undefined' && aPattern.length == 2)? aPattern : ['[:',':]'];
 
-}
+};
 
 /**
  * [treatObjet treatement par reference]
@@ -23,18 +23,18 @@ Template.prototype.treatObjet = function( sPrefix, oItem, oParent) {
 
         if( typeof( oItem[sAttr]) == 'object'){
 
-            sNewAttr = ( sPrefix != '')? sPrefix + '.' + sAttr : sAttr;
+            sNewAttr = ( sPrefix !== '')? sPrefix + '.' + sAttr : sAttr;
             this.treatObjet( sNewAttr, oItem[sAttr], oItem);
             delete oParent[sAttr];
 
         }else{
-            sNewAttr = ( sPrefix != '')? sPrefix + '.' + sAttr : sAttr;
+            sNewAttr = ( sPrefix !== '')? sPrefix + '.' + sAttr : sAttr;
             oParent[sNewAttr] = oItem[sAttr];
         }
 
     }
 
-}
+};
 
 /**
  * [compute description]
@@ -57,4 +57,4 @@ Template.prototype.compute = function( _oItem) {
 
     return sTemplate;
 
-}
+};
