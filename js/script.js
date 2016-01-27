@@ -155,8 +155,31 @@ var aData =[
 ];
 
 oDirective = {
+
   auteur : function( sValue){
     return this.titre + " by " + sValue;
+  },
+
+  action  : function(){
+    return new Date()*1;
+  },
+
+  stat:{
+
+
+    like : function( iValue){
+      var iTotal = this.stat.share + iValue,
+          iPor   = Math.round( (iValue * 100)/iTotal);
+
+      return  iPor + "%";
+    },
+
+    share : function( iValue){
+      var iTotal = this.stat.share + iValue,
+          iPor   = Math.round( (iValue * 100)/iTotal);
+
+      return  iPor + "%";
+    }
   }
 };
 /**
