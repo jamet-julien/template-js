@@ -120,7 +120,7 @@ Template.prototype.compute = function( _oItem, _oDirective) {
 
       }else{
 
-        sValue = oItem[ sAttr ];
+        sValue = (typeof oItem[ sAttr ] == "undefined")? '' : oItem[ sAttr ] ;
       }
 
       sTemplate = sTemplate.split( this._aPattern[0] + sAttr.toUpperCase() + this._aPattern[1]).join( sValue);

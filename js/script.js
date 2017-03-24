@@ -166,7 +166,6 @@ oDirective = {
 
   stat:{
 
-
     like : function( iValue){
       var iTotal = this.stat.share + iValue,
           iPor   = Math.round( (iValue * 100)/iTotal);
